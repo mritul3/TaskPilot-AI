@@ -1,5 +1,5 @@
-import { Calendar, Pencil, Trash2 } from 'lucide-react';
-import { formatDate, priorityColors, statusColors } from '../../utils/taskHelpers';
+import { Calendar, Clock, Pencil, Trash2 } from 'lucide-react';
+import { formatDate, formatDuration, priorityColors, statusColors } from '../../utils/taskHelpers';
 
 export default function TaskCard({ task, onEdit, onDelete, onStatusChange }) {
   return (

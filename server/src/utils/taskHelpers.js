@@ -12,6 +12,13 @@ export function fixStatus(value) {
   return found || 'Todo';
 }
 
+export function fixEstimate(value) {
+  if (value === null || value === undefined || value === '') return null;
+  const num = Math.round(Number(value) / 15) * 15;
+  if (Number.isNaN(num)) return null;
+  return Math.min(480, Math.max(5, num));
+}
+
 function parseDate(value) {
   if (!value) return null;
   const date = new Date(value);
@@ -26,6 +33,7 @@ export function shapeAiTask(task) {
     category: String(task?.category || 'General').trim().slice(0, 100) || 'General',
     priority: fixPriority(task?.priority),
     status: fixStatus(task?.status),
+    estimatedMinutes: fixEstimate(task?.estimatedMinutes),
   };
 }
 
@@ -40,6 +48,7 @@ export function shapeBulkTask(task, userId) {
     priority: fixPriority(task?.priority),
     status: fixStatus(task?.status),
     dueDate: task?.dueDate ? parseDate(task.dueDate) : null,
+    estimatedMinutes: fixEstimate(task?.estimatedMinutes),
     userId,
   };
 }

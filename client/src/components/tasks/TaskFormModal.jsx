@@ -6,11 +6,12 @@ import Button from '../ui/Button';
 import Input from '../ui/Input';
 import Select from '../ui/Select';
 import { emptyTask, PRIORITIES, STATUSES } from '../../utils/taskHelpers';
-import { suggestPriority } from '../../services/aiService';
+import { suggestPriority, suggestEstimate } from '../../services/aiService';
 
 export default function TaskFormModal({ isOpen, onClose, onSubmit, task, loading }) {
   const [form, setForm] = useState(emptyTask);
   const [aiPriorityBusy, setAiPriorityBusy] = useState(false);
+  const [aiEstimateBusy, setAiEstimateBusy] = useState(false);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -22,6 +23,7 @@ export default function TaskFormModal({ isOpen, onClose, onSubmit, task, loading
         priority: task.priority || 'Medium',
         status: task.status || 'Todo',
         dueDate: task.dueDate ? task.dueDate.split('T')[0] : '',
+        estimatedMinutes: task.estimatedMinutes ?? '',
       });
     } else {
       setForm(emptyTask);
@@ -75,6 +77,7 @@ export default function TaskFormModal({ isOpen, onClose, onSubmit, task, loading
       description: form.description.trim(),
       category: form.category.trim() || 'General',
       dueDate: form.dueDate || null,
+      estimatedMinutes: form.estimatedMinutes ? Number(form.estimatedMinutes) : null,
     });
   };
 

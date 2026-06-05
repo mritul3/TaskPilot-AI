@@ -1,5 +1,5 @@
 import * as aiService from '../services/aiService.js';
-import { fixPriority, shapeAiTask } from '../utils/taskHelpers.js';
+import { fixPriority, fixEstimate, shapeAiTask } from '../utils/taskHelpers.js';
 
 const MAX_INPUT = 2000;
 

@@ -40,4 +40,5 @@ export const emptyTask = {
   priority: 'Medium',
   status: 'Todo',
   dueDate: '',
+  estimatedMinutes: '',
 };

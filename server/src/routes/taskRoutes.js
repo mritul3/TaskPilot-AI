@@ -45,6 +45,7 @@ const createValidation = [
   body('priority').optional().isIn(PRIORITIES),
   body('status').optional().isIn(STATUSES),
   dueDateValidator,
+  estimatedMinutesValidator,
 ];
 
 const updateValidation = [
@@ -54,6 +55,7 @@ const updateValidation = [
   body('priority').optional().isIn(PRIORITIES),
   body('status').optional().isIn(STATUSES),
   dueDateValidator,
+  estimatedMinutesValidator,
 ];
 
 const listQueryValidation = [

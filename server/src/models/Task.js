@@ -37,6 +37,12 @@ const taskSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+    estimatedMinutes: {
+      type: Number,
+      default: null,
+      min: 5,
+      max: 480,
+    },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
